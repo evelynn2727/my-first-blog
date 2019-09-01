@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .forms import PostForm
 
 urlpatterns=[
     path('', views.post_list, name='post_list'),
@@ -8,3 +9,8 @@ urlpatterns=[
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
 
 ]
+
+
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
